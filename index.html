@@ -12,6 +12,7 @@
     </style>
 </head>
 <body>
+    
 
 
     <form id="speedDetectorForm">
@@ -24,56 +25,48 @@
         <button type="submit">Submit</button>
     </form>
     <p> Speed Kills Better stay within the LIMIT</p>
-    <script>//  speed detecting system. speed<70 = ok.
+<script>
+    // speed detecting system. speed<70 = ok.
 // for every 5km per hour above 70 = i demerit point.
 //print total demerit points
 // if demerit points are >12 print license suspended.
 
+//create a function as control.(default manenoz nini nini)
+    function checkSpeed() {
+    const carSpeedElement = document.getElementById("car-speed");
+    const demeritPointsElement = document.getElementById("demeritPoints");
 
-const currentSpeed = prompt('Input current Vehicle speed');// declare the varible to hold the vehicle speed
-// and a prompt for the user to input
-const currentSpeedInt = parseInt(currentSpeed);
-//we set the data type of the input values to be numbers
-const demeritPoints = prompt('Input total demerit points');
-//assuming we have the points gained by  driver,
-//we prompt the user to input it. 
-//Otherwise we should create a function calculated the accrued points(FYI)
-const demeritPointsInt = parseint(demeritPoints)
-// we declare that the points just like speed are numbers.
-//by using () we invoke the demeritPoints function.
-//lay man terms we just called it.
+    const carSpeed = parseInt(carSpeedElement.value);
+    const demeritPoints = parseInt(demeritPointsElement.value);
 
+    if (carSpeed <= 70) {
+        console.log("Ok");
+    } else {
+        const exceededSpeed = carSpeed - 70;
+        const points = Math.floor(exceededSpeed / 5);
+        const totalPoints = demeritPoints + points;
 
-//Now we have to set condtions inorder to hve the logic of the whole thing.
+        console.log(`You received ${points} demerit points`);
+        console.log(`Your current demerit points are ${totalPoints}`);
 
-if(currentSpeedInt <= 70){
-    console.log("Ok");
+        if (totalPoints > 12) {
+            console.log("License suspended");
+        } else {
+            console.log("Drive safe, nice driving!");
+        }
+    }
 }
-//using the if statement, we now set to set and satisfy the condtion.
-else{
-    const exceededSpeed = currentSpeed -70;
-    // we declared a new varible which will hold the vlue of the exceeded speed.
-    const points = Math.floor(exceeededSpeed / 5);
-    const totalPoints = demeritPointsINt + points;
 
-    // having gotten the figures we need for the above opertions, we  only remain with displaying them.
+document.addEventListener("DOMContentLoaded", () => {
+    const checkSpeedButton = document.getElementById("check-speed");
+    if (checkSpeedButton) {
+        checkSpeedButton.addEventListener("click", checkSpeed);
+    } else {
+        console.error("Check speed button not found");
+    }
+});
 
-
-    console.log("your points are ${points} demerit points." );
-    // we use the $ sign to refere to the variable points.
-
-    console.log (" exceeded speed limit by ${exceededSpeed} km/h")
-    console.log("your total points are currently at ${totalPoints}.")
-    // Show the total points so far
-
-
-}
-// to show the driver the result according to the retrieved data.
-if(demeritPoints > 12){
-    console.log("License suspended");
-}else{
-    console.log("Keep adhering to the limits. Kudos driver");
-}</script>
+</script>
     
 </body>
 </html>
