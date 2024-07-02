@@ -3,28 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>speed detector</title>
-    <style>
-        body{
-            background-color: aquamarine;
-        }
-        
-    </style>
+    <title>Speed Detector</title>
 </head>
 <body>
-    
-
-
-    <form id="speedDetectorForm">
-        <label for="currentSpeed">Current Vehicle Speed:</label>
-        <input type="number" id="currentSpeed" name="currentSpeed" required><br><br>
-        
-        <label for="demeritPoints">Total Demerit Points:</label>
-        <input type="number" id="demeritPoints" name="demeritPoints" required><br><br>
-
-        <button type="submit">Submit</button>
-    </form>
-    <p> Speed Kills Better stay within the LIMIT</p>
+    <div>
+        <label for="car-speed">Car Speed:</label>
+        <input type="number" id="car-speed" name="car-speed">
+    </div>
+    <div>
+        <label for="demeritPoints">Demerit Points:</label>
+        <input type="number" id="demeritPoints" name="demeritPoints">
+    </div>
+    <button id="check-speed">Check Speed</button>
 <script>
     // speed detecting system. speed<70 = ok.
 // for every 5km per hour above 70 = i demerit point.
